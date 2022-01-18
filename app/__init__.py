@@ -9,7 +9,7 @@ DB_NAME = "database.db"
 def create_app():
     app = Flask(__name__)
 
-    # Config app flask environement
+    # Define flask app environement config
     if app.config["ENV"] == "production":
         app.config.from_object("config.ProductionConfig")
     else:

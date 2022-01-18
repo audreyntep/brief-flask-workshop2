@@ -1,3 +1,4 @@
+import imp
 from flask import Blueprint, render_template, request, flash
 from flask_login import login_required, current_user
 from .models import Note
@@ -7,6 +8,7 @@ views = Blueprint('views', __name__)
 
 @views.route('/hello')
 def hello():
+
     return "<h1>hello</h1>"
 
 @views.route('/', methods=['GET', 'POST'])

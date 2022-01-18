@@ -1,4 +1,5 @@
 .env
 app.yaml
-app/database.db
+app/*.db
 app/__pycache__
+app/__pycache__/*

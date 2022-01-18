@@ -9,11 +9,14 @@ DB_NAME = "database.db"
 def create_app():
     app = Flask(__name__)
 
-    # Config session
-    app.secret_key = "ceci est secret"
-    app.config['SESSION_TYPE'] = 'filesystem'
+    # Config app flask environement
+    if app.config["ENV"] == "production":
+        app.config.from_object("config.ProductionConfig")
+    else:
+        app.config.from_object("config.DevelopmentConfig")
+    print(f' * Flask ENV is set to: {app.config["ENV"]}')
 
-    # Config database
+    # Config app sqlachemy database
     app.config['SQLALCHEMY_DATABASE_URI'] =  f'sqlite:///{DB_NAME}'
     db.init_app(app)
 
@@ -32,16 +35,20 @@ def create_app():
     login_manager.login_view = 'auth.login' # redirection si login necessaire
     login_manager.init_app(app)
 
-    # Get user data from db
+    # Get current user data from db
     @login_manager.user_loader
     def load_user(id):
         return User.query.get(int(id))
 
+    #print(app.config)
+
     return app
 
-def create_database(my_app):
+def create_database(app):
     if not path.exists('app/'+ DB_NAME):
-        db.create_all(app=my_app)
+        db.create_all(app=app)
         print('Database created!')
+
+
 
 

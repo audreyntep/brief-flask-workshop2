@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}MyBlog-logout{% endblock %}
+
+{% block header %}
+    <h1>Log out Page</h1>
+{% endblock %}
+            
+{% block main %}
+
+    {% if logout == True %}
+    <p>True</p>
+    {% elif logout == False %}
+    <p>false</p>
+    {% else %}
+    <p>Don't know!</p>
+    {% endif %}
+
+    <div>
+        <p>
+            <a href="{{url_for('views.home')}}">Home</a>
+        </p>
+    </div>
+{% endblock %}

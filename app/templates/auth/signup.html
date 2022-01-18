@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}MyBlog-signup{% endblock %}
+
+{% block header %}
+    <h1>Sign up page</h1>
+{% endblock %}
+            
+{% block main %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <h2>Créer un compte</h2>
+    <form action="" method="POST">
+        <label for="name">Pseudo : </label>
+        <input type="text" name="name" id="name" required>
+        <label for="pswd">Password : </label>
+        <input type="password" name="pswd" id="pswd" required>
+        <button type="submit">Ok</button>
+    </form>
+    <div>
+        <p>
+            <a href="{{url_for('views.home')}}">Home</a>
+        </p>
+    </div>
+{% endblock %}

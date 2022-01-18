@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}MyBlog-user{% endblock %}
+
+{% block header %}
+    <h1> hello {{ user.name }}</h1>
+{% endblock %}
+            
+{% block main %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+{% if user %}
+    <p>
+        <a href="{{url_for('auth.logout')}}">Logout</a>
+    </p>
+{% endif %}
+    <div>
+        <h2>Write a note :</h2>
+        <form action="" method="POST">
+            <label for="note">New note : </label>
+            <input type="text" name="note" id="note"> 
+            <button type="submit">Add note</button>
+        </form>
+    </div>
+    <p>Your notes :</p> 
+    <ul>
+        {% for note in user.notes %}
+            <li>
+                {{note.id}} {{note.note }}
+                <button type="button" class="close" onClick="deleteNote({{note.id}})">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

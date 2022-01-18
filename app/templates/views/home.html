@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}MyBlog-home{% endblock %}
+
+{% block header %}
+    <h1>Home page - {{ name }}</h1>
+{% endblock %}
+
+{% block main %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div>
+        <h2>Ecrire un messsage secret :</h2>
+        <form action="" method="POST">
+            <label for="post_text">Votre message : </label>
+            <input type="text" name="text" id="post_text"> 
+            <button type="submit">OK</button>
+        </form>
+    </div>
+    <p>Votre message post : {{ post_text }}</p>
+    <div>
+        <h2>Ecrire un messsage visible :</h2>
+        <form action="" method="GET">
+            <label for="get_text">Votre message : </label>
+            <input type="text" name="text" id="get_text"> 
+            <button type="submit">OK</button>
+        </form>
+    </div>
+    <p>Votre message get : {{ get_text }}</p>
+    <div>
+        <p>
+            <!--lien url fonction page_un()-->
+            <a href="{{url_for('auth.login')}}">Login</a>
+        </p>
+        <p>
+            <!--lien url fonction page_un()-->
+            <a href="{{url_for('auth.sign_up')}}">Signup</a>
+        </p>
+    </div>
+{% endblock %}

@@ -1,8 +1,12 @@
-# WORKSHOP FLASK 1
+# WORKSHOP FLASK 2
 
-1. Installer les requirements
+1. Install the lib requirements
 
-2. Exécuter main.py
+    <code>pip install -r requirements.txt</code>
+
+2. Run main.py
+
+    <code>python main.py</code>
 
 
 

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+    <title>Home</title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Free Web tutorials">
+        <meta name="keywords" content="HTML, CSS, Flask, Python">
+        <meta name="author" content="Audrey Ntep">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel ="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    </head>
+    <body>
+	    <h1 > {{ message }}</h1>
+        <div>
+            <h2>Indiquer votre nom</h2>
+            <form action="" method="POST">
+                <label for="name">Votre nom : </label>
+                <input type="text" name="name" id="name"> 
+                <button type="submit">OK</button>
+            </form>
+        </div>
+        <p>
+            <!--lien url fonction page_un()-->
+            <a href="{{url_for('page_un')}}">Page 1</a>
+        </p>
+        <p>
+            <!--lien url direct /1-->
+            <a href="/1">Page 1</a>
+        </p>
+        
+    </body>
+</html>
